@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vendors/angular.min.js"></script>
+    <script src="../scripts/client.js"></script>
+    <link rel="stylesheet" href="../vendors/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../vendors/bootstrap/css/bootstrap-theme.css">
+    <!--<link rel="stylesheet" href="../.css"> -->
+    <title>6 Photos</title>
+</head>
+<body ng-app="myApp">
+    <h1>Photos</h1>
+    <main ng-controller="PhotoController as PC" ng init="getPhotos()">
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-md-4" ng-repeat="photo in PC.photos">
+                    {{photo}}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+</body>
+</html>
