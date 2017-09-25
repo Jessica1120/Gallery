@@ -17,8 +17,11 @@
         <div class = "container">
             <div class = "row">
                 <div class = "col-md-4" ng-repeat="photo in PC.photos">
-                   <img ng-src ="{{photo.image}}">
+                   <img ng-src ="{{photo.image}}" ng-click= "PC.toggle(photo)" ng-show="photo.see">
+                   <div id="caption" ng-click="PC.toggle(photo)" ng-show="!photo.see" >
+                    <p>{{photo.caption}}</p>
                 </div>
+            </div>
             </div>
         </div>
     </main>
