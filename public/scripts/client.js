@@ -6,9 +6,7 @@ myApp.controller('PhotoController', function($http) {
     console.log('PC');
     var vm = this;
 
-    vm.photos = [];
-
-    vm.getPhotos = function(req, res) {
+    vm.getPhotos = function() {
         $http({
             method: 'GET',
             url:    '/photos'
@@ -19,15 +17,34 @@ myApp.controller('PhotoController', function($http) {
     }; //end Get
     vm.getPhotos();
 
-    vm.toggle = function (photo) {
-        photo.see = !photo.see;
-        console.log(photo.see);
-    };
-    vm.postYes = function(req, req) {
+    vm.postYes = function(index) {
+        console.log('postYes', index)
         $http({
-            method: ''
+            method: 'PUT',
+            url: '/photos',
+            data: {index: index}
+        }).then(function(res) {
+            console.log('put res', res)
+            vm.getPhotos();
         })
-    }
+    }   
+    vm.postComment = function(comment, index) {
+        var objtoSend = {
+            comment: comment,
+            index: index,
+        }
+        console.log('postComment', objtoSend)
+        $http({
+            method: 'POST',
+            url: '/photos',
+            data: objtoSend,
+        }).then(function(res) {
+            console.log('post res', res)
+            vm.getPhotos();
+        })
+    }   
+
+    
 });// end PC
 
 

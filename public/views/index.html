@@ -11,20 +11,33 @@
     <link rel="stylesheet" href="../styles/styles.css">
     <title>6 Photos</title>
 </head>
-<body ng-app="myApp">
-    <h1>Photos</h1>
+<body ng-app="myApp" class="container-fluid">
+    <div class="row" id="header">
+        <h1 class="col-md-12">Photo Gallery</h1>
+    </div>
     <main ng-controller="PhotoController as PC" ng init="getPhotos()">
-        <div class = "container">
-            <div class = "row">
-                <div class = "col-md-4" ng-repeat="photo in PC.photos">
-                    <div class = "photos_and_caption"></div>
-                   <img ng-src ="{{photo.image}}" ng-click= "PC.toggle(photo)" ng-show="photo.see">
-                   <div id="caption" ng-click="PC.toggle(photo)" ng-show="!photo.see" >
-                    <p>{{photo.caption}}</p>
-                    </div>
-                    <button id ="yes" ng-click="PC.postYes">Yes!</button>
+       <div class = "row">
+            <div class = "col-md-3" ng-repeat="photo in PC.photos">
+                <div ng-click= "view=!view" ng-hide="view" >
+                    <img  class="img-responsive" id="photo" ng-src="{{photo.image}}">
                 </div>
-            </div>
+                <div ng-click="view=!view" ng-hide="!view" id="caption"> 
+                    <p >{{photo.caption}}</p>
+                </div>
+                <div>
+                    <button class ="btn" ng-click="PC.postYes($index)">Yes!</button>
+                    <div>{{photo.yesses}}</div>
+                    <button class ="btn" ng-click="seeComment=!seeComment" ng-hide="seeComment">View Comments</button>
+                    <button class ="btn" ng-click="seeComment=!seeComment" ng-hide="!seeComment">Hide Comments</button>
+                    <div ng-hide="!seeComment">{{photo.comment[0]}}</div>
+                </div>
+                <div>
+                    <input type="text" id="commentIn" ng-model="photo.comment"></input>
+                    <button class="btn" ng-click="PC.postComment(photo.comment, $index)">Post</button>
+                </div>
+                
+                
+                
             </div>
         </div>
     </main>
