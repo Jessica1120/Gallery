@@ -17,14 +17,14 @@
     </div>
     <main ng-controller="PhotoController as PC" ng init="getPhotos()">
        <div class = "row">
-            <div class = "col-md-3" ng-repeat="photo in PC.photos">
-                <div ng-click= "view=!view" ng-hide="view" >
-                    <img  class="img-responsive" id="photo" ng-src="{{photo.image}}">
+            <div class = "col-md-3" ng-repeat="photo in PC.photos.rowOne">
+                <div ng-click= "view=!view" ng-hide="view" class="photoBlock">
+                    <img class="img-responsive" id="photo" ng-src="{{photo.image}}">
                 </div>
-                <div ng-click="view=!view" ng-hide="!view" id="caption"> 
-                    <p >{{photo.caption}}</p>
+                <div ng-click="view=!view" ng-hide="!view" class="photoBlock"> 
+                    <p>{{photo.caption}}</p>
                 </div>
-                <div>
+                <div class="commentBlock">
                     <button class ="btn" ng-click="PC.postYes($index)">Yes!</button>
                     <div>{{photo.yesses}}</div>
                     <button class ="btn" ng-click="seeComment=!seeComment" ng-hide="seeComment">View Comments</button>
@@ -34,12 +34,28 @@
                 <div>
                     <input type="text" id="commentIn" ng-model="photo.comment"></input>
                     <button class="btn" ng-click="PC.postComment(photo.comment, $index)">Post</button>
-                </div>
-                
-                
-                
+                </div>          
             </div>
         </div>
+        <div class = "row">
+                <div class = "col-md-3" ng-repeat="photo in PC.photos.rowTwo">
+                    <div ng-click= "view=!view" ng-hide="view" class="photoBlock">
+                        <img class="img-responsive" id="photo" ng-src="{{photo.image}}">
+                    </div>
+                    <div ng-click="view=!view" ng-hide="!view" class="photoBlock"> 
+                        <p>{{photo.caption}}</p>
+                    </div>
+                    <div class="commentBlock">
+                        <button class ="btn" ng-click="PC.postYes($index)">Yes!</button>
+                        <div>{{photo.yesses}}</div>
+                        <button class ="btn" ng-click="seeComment=!seeComment" ng-hide="seeComment">View Comments</button>
+                        <button class ="btn" ng-click="seeComment=!seeComment" ng-hide="!seeComment">Hide Comments</button>
+                        <div ng-hide="!seeComment">{{photo.comment[0]}}</div>
+                    </div>
+                    <div>
+                        <input type="text" id="commentIn" ng-model="photo.comment"></input>
+                        <button class="btn" ng-click="PC.postComment(photo.comment, $index)">Post</button>
+                    </div>
     </main>
 
     

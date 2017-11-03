@@ -4,19 +4,14 @@ body {
 
 
 #caption {
-        height: 200px;
-        width: 200px;
+      
         border: black solid;
         text-align: center;
 }
+
 
 #header {
         text-align: center;
         background-color: purple;
         color: white;
-}
-
-#photo {
-        height: 200px;
-        width: 200px;
 }
