@@ -1,17 +1,29 @@
 body {
-        background: black;
+        background: linear-gradient(to right, #007991, #78ffd6);
 }
 
 
-#caption {
-      
+
+.caption {
+        height: 400px;
+        width: 200px;
+        padding: 80px;
         border: black solid;
         text-align: center;
+        font-family: 'Amatic SC', cursive;
+        font-size: 20px;
+        margin: 20px;
 }
 
+.commentBlock {
+        margin: 20px;
+}
 
 #header {
         text-align: center;
         background-color: purple;
         color: white;
+}
+.photoBlock {
+        margin: 20px;
 }

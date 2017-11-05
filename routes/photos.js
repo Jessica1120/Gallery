@@ -26,12 +26,17 @@ router.get('/', function(req, res) {
     res.send(photos);
 });
 
-router.put('/', function (req, res) {
+router.put('/rowOne', function (req, res) {
+    console.log('put logs', req.body);
+    photos.rowOne[req.body.index].yesses++
+    res.sendStatus(202);
+});
+
+router.put('/rowTwo', function (req, res) {
     console.log('put logs', req.body);
     photos[req.body.index].yesses++
     res.sendStatus(202);
 });
-
 router.post('/', function (req, res) {
     console.log('put logs', req.body.comment, req.body.index);
     photos[req.body.index].comment.push(req.body.comment);

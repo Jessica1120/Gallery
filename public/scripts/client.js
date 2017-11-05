@@ -21,7 +21,19 @@ myApp.controller('PhotoController', function($http) {
         console.log('postYes', index)
         $http({
             method: 'PUT',
-            url: '/photos',
+            url: '/photos/rowOne',
+            data: {index: index}
+        }).then(function(res) {
+            console.log('put res', res)
+            vm.getPhotos();
+        })
+    }   
+
+    vm.postYesAgain = function(index) {
+        console.log('postYes', index)
+        $http({
+            method: 'PUT',
+            url: '/photos/rowTwo',
             data: {index: index}
         }).then(function(res) {
             console.log('put res', res)
